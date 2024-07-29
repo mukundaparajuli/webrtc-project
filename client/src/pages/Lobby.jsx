@@ -33,33 +33,54 @@ const Lobby = () => {
     return () => {
       socket.off("room:join");
     };
-  }, [socket]);
+  }, [socket, handleJoin]);
   return (
-    <div>
-      <h1>Lobby</h1>
-      <form onSubmit={onSubmit}>
-        <label htmlFor="email">Email </label>
-        <input
-          type="text"
-          name="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <br />
-        <br />
-        <label htmlFor="room">Room </label>
-        <input
-          type="text"
-          name="room"
-          id="room"
-          value={room}
-          onChange={(e) => setRoom(e.target.value)}
-        />
-        <br />
-        <br />
-        <button type="submit">Join</button>
-      </form>
+    <div className="flex fixed justify-center items-center min-h-screen min-w-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-400 to-blue-800 text-white bg-blue-500">
+      <div className="bg-black bg-opacity-10 p-4 m-4 py-4 flex flex-col w-1/3 ">
+        <h1 className="font-semibold text-5xl my-4">Lobby</h1>
+        <form onSubmit={onSubmit}>
+          <label
+            htmlFor="email"
+            className="font-semibold text-md italic sr-only"
+          >
+            Email{" "}
+          </label>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="rounded-sm text-gray-500 p-1 px-2 w-full "
+            placeholder="Email"
+          />
+          <br />
+          <br />
+          <label
+            htmlFor="room"
+            className="font-semibold text-md italic sr-only"
+          >
+            Room{" "}
+          </label>
+          <input
+            type="text"
+            name="room"
+            id="room"
+            value={room}
+            onChange={(e) => setRoom(e.target.value)}
+            className="rounded-sm text-gray-500 p-1 px-2 w-full mb-4 "
+            placeholder="Room"
+          />
+          <br />
+          <br />
+          <button
+            type="submit"
+            className="w-full bg-white text-blue-500 font-semibold p-1 rounded-sm"
+          >
+            Join
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
